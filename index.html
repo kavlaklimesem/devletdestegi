@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAVLAKLI MESEM DEVLET DESTEĞİ TAKİP</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script>
+        const supabaseUrl = 'https://zdizpniisqmxzqvqmaif.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkaXpwbmlpc3FteHpxdnFtYWlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5ODc0MTQsImV4cCI6MjA1NTU2MzQxNH0.QIQRFP9d3F9QCzOLsqjZSdCIl2xcvRG0H8cfLHxZlTc';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function fetchTeachers() {
+            const { data, error } = await supabase
+                .from('teachers')
+                .select('name');
+
+            if (error) {
+                console.error('Error fetching teachers:', error);
+                return;
+            }
+
+            const selectElement = document.getElementById('teacher-select');
+            data.forEach(teacher => {
+                const option = document.createElement('option');
+                option.value = teacher.name.toLowerCase().replace(/\s+/g, '-');
+                option.textContent = teacher.name;
+                selectElement.appendChild(option);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchTeachers);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>KAVLAKLI MESEM DEVLET DESTEĞİ TAKİP</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <label for="teacher-select">Öğretmen Seçin:</label>
+                <select id="teacher-select">
+                    <!-- Öğretmen isimleri Supabase'den dinamik olarak yüklenecek -->
+                </select>
+            </div>
+            <!-- Diğer içerikler buraya eklenebilir -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 KAVLAKLI MESEM. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html> 
