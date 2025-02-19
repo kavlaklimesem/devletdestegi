@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAVLAKLI MESEM DEVLET DESTEĞİ TAKİP</title>
+    <title>Öğretmen Bilgileri</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>KAVLAKLI MESEM DEVLET DESTEĞİ TAKİP</h1>
+        <h1 id="page-title">Öğretmen Bilgileri</h1>
     </header>
     <main>
         <section>
@@ -19,41 +21,32 @@
                     <!-- Öğretmen isimleri buraya eklenecek -->
                 </select>
             </div>
-            <!-- Diğer içerikler buraya eklenebilir -->
+            <div>
+                <label for="tc-input">TC Kimlik No:</label>
+                <input type="text" id="tc-input" maxlength="11" placeholder="TC Kimlik No" required>
+            </div>
+            <button type="button" id="login-button">GİRİŞ YAP</button>
+        </section>
+        <section id="data-section" style="display: none;">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>İşletme Adı</th>
+                        <th>Ad Soyad</th>
+                        <th>Kimlik No</th>
+                        <th>Ücret</th>
+                        <th>Dekont Durumu</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Veriler buraya eklenecek -->
+                </tbody>
+            </table>
+            <button type="button" id="save-screen-button">EKRANI KAYDET</button>
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 KAVLAKLI MESEM. Tüm hakları saklıdır.</p>
+        <p>&copy; 2025 KAVLAKLI MESEM. Tüm hakları saklıdır.</p>
     </footer>
-
-    <script>
-        // Supabase istemcisini başlat
-        const SUPABASE_URL = 'https://zdizpniisqmxzqvqmaif.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkaXpwbmlpc3FteHpxdnFtYWlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk5ODc0MTQsImV4cCI6MjA1NTU2MzQxNH0.QIQRFP9d3F9QCzOLsqjZSdCIl2xcvRG0H8cfLHxZlTc';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        // Öğretmen isimlerini çek ve açılır listeye ekle
-        async function fetchTeachers() {
-            const { data, error } = await supabase
-                .from('teachers')
-                .select('id, name');
-
-            if (error) {
-                console.error('Hata:', error);
-                return;
-            }
-
-            const selectElement = document.getElementById('teacher-select');
-            data.forEach(teacher => {
-                const option = document.createElement('option');
-                option.value = teacher.id;
-                option.textContent = teacher.name;
-                selectElement.appendChild(option);
-            });
-        }
-
-        // Sayfa yüklendiğinde öğretmenleri çek
-        document.addEventListener('DOMContentLoaded', fetchTeachers);
-    </script>
 </body>
-</html> 
+</html>
