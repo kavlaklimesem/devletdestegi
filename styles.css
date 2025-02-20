@@ -98,12 +98,14 @@ table {
     margin-top: 20px;
     overflow-x: auto;
     text-align: center;
+    table-layout: fixed;
 }
 
 th, td {
     padding: 8px;
     text-align: center;
     border-bottom: 1px solid #b0bec5;
+    word-wrap: break-word;
 }
 
 th {
