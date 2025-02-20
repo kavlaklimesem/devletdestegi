@@ -34,6 +34,9 @@ main {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
     margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 section {
@@ -90,9 +93,11 @@ button:hover {
 
 table {
     width: 100%;
+    max-width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     overflow-x: auto;
+    text-align: center;
 }
 
 th, td {
