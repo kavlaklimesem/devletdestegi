@@ -26,10 +26,10 @@ h1 {
 }
 
 main {
-    width: 98%;
+    width: 95%;
     max-width: 800px;
     background-color: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
@@ -101,7 +101,7 @@ table {
 }
 
 th, td {
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     border-bottom: 1px solid #b0bec5;
 }
