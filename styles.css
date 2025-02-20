@@ -93,12 +93,10 @@ button:hover {
 
 table {
     width: 100%;
-    max-width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    overflow-x: auto;
     text-align: center;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 th, td {
