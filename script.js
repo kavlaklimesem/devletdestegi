@@ -31,7 +31,7 @@ async function checkAndFetchData() {
     // TC Kimlik No ve öğretmen adı doğrulama
     const { data: teacherData, error: teacherError } = await supabase
         .from('teachers')
-        .select('tc_no')
+        .select('tc_no, name')
         .eq('name', selectedTeacher)
         .eq('tc_no', tcInput);
 
@@ -40,12 +40,20 @@ async function checkAndFetchData() {
         return;
     }
 
+    // Kullanıcı bilgilerini göster
+    const userInfoDiv = document.getElementById('user-info');
+    userInfoDiv.innerHTML = `<p>Giriş Yapan: ${teacherData[0].name} - TC: ${teacherData[0].tc_no}</p>`;
+    userInfoDiv.style.display = 'block';
+
+    // Giriş alanlarını gizle
+    document.querySelector('section').style.display = 'none';
+
     // Devlet desteği verilerini çekme ve id'ye göre sıralama
     const { data, error } = await supabase
         .from('devlet_destegi')
         .select('*')
         .eq('ogretmen_adi', selectedTeacher)
-        .order('id', { ascending: true }); // id'ye göre artan sırada sıralama
+        .order('id', { ascending: true });
 
     if (error) {
         console.error('Hata:', error);
