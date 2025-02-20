@@ -40,11 +40,12 @@ async function checkAndFetchData() {
         return;
     }
 
-    // Devlet desteği verilerini çekme
+    // Devlet desteği verilerini çekme ve id'ye göre sıralama
     const { data, error } = await supabase
         .from('devlet_destegi')
         .select('*')
-        .eq('ogretmen_adi', selectedTeacher);
+        .eq('ogretmen_adi', selectedTeacher)
+        .order('id', { ascending: true }); // id'ye göre artan sırada sıralama
 
     if (error) {
         console.error('Hata:', error);
@@ -64,7 +65,7 @@ async function checkAndFetchData() {
 
     data.forEach(row => {
         const tr = document.createElement('tr');
-        const isChecked = row.odeme_evrağı_durumu === "Ödeme Evrağı Teslim Edildi";
+        const isChecked = row.odeme_evragi_durumu === "Ödeme Evrağı Teslim Edildi";
         tr.innerHTML = `
             <td>${row.isletme_adi}</td>
             <td>${row.ad_soyad}</td>
@@ -72,7 +73,7 @@ async function checkAndFetchData() {
             <td>${row.ucret}</td>
             <td>
                 <input type="checkbox" onchange="updateMessage(this)" ${isChecked ? 'checked' : ''} />
-                <span class="message">${row.odeme_evrağı_durumu || "Ödeme Evrağı Zamanında Teslim Edilmedi"}</span>
+                <span class="message">${row.odeme_evragi_durumu || "Ödeme Evrağı Zamanında Teslim Edilmedi"}</span>
             </td>
         `;
         tableBody.appendChild(tr);
@@ -102,27 +103,29 @@ async function saveScreen() {
         // Veritabanını güncelle
         const { error } = await supabase
             .from('devlet_destegi')
-            .update({ odeme_evrağı_durumu: message })
+            .update({ odeme_evragi_durumu: message })
             .eq('kimlik_no', kimlikNo);
 
         if (error) {
-            console.error('Güncelleme hatası:', error);
+            console.error('Güncelleme hatası:', error.message, 'Kimlik No:', kimlikNo, 'Mesaj:', message);
             hasError = true;
         }
     }
 
     if (!hasError) {
         const message = document.createElement('div');
-        message.textContent = 'DEKONT DURUMU KAYDEDİLDİ';
+        message.textContent = 'EKRAN KAYDETME BAŞARILI';
         message.style.position = 'fixed';
-        message.style.top = '20px';
+        message.style.top = '50%';
         message.style.left = '50%';
-        message.style.transform = 'translateX(-50%)';
+        message.style.transform = 'translate(-50%, -50%)';
         message.style.backgroundColor = '#4caf50';
         message.style.color = 'white';
-        message.style.padding = '10px 20px';
-        message.style.borderRadius = '5px';
+        message.style.padding = '20px 40px';
+        message.style.borderRadius = '10px';
         message.style.zIndex = '1000';
+        message.style.fontSize = '1.5em';
+        message.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
         document.body.appendChild(message);
 
         setTimeout(() => {

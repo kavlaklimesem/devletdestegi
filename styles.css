@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #e0f7fa;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,27 +11,27 @@ body {
 }
 
 header {
-    background-color: #4fc3f7;
+    background-color: #00796b;
     color: white;
     width: 100%;
     text-align: center;
     padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     margin: 0;
-    font-size: 2em;
-    letter-spacing: 1px;
+    font-size: 1.8em;
+    letter-spacing: 1.5px;
 }
 
 main {
-    width: 90%;
+    width: 98%;
     max-width: 800px;
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
     margin-bottom: 60px;
 }
@@ -44,7 +44,7 @@ section {
 }
 
 label {
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 10px;
     display: block;
     text-align: center;
@@ -52,29 +52,29 @@ label {
 
 select, input[type="text"] {
     width: 100%;
-    max-width: 300px;
-    padding: 10px;
+    max-width: 350px;
+    padding: 8px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    border: 1px solid #b0bec5;
     box-sizing: border-box;
     transition: border-color 0.3s;
 }
 
 select:focus, input[type="text"]:focus {
-    border-color: #4fc3f7;
+    border-color: #00796b;
     outline: none;
 }
 
 button {
     width: 100%;
-    max-width: 300px;
-    padding: 10px;
+    max-width: 350px;
+    padding: 12px;
     font-size: 1em;
     color: white;
-    background-color: #4fc3f7;
+    background-color: #00796b;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
     margin-top: 20px;
@@ -84,52 +84,53 @@ button {
 }
 
 button:hover {
-    background-color: #0288d1;
-    transform: translateY(-2px);
+    background-color: #004d40;
+    transform: translateY(-3px);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    overflow-x: auto;
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #b0bec5;
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #e0f2f1;
     font-weight: bold;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e0f7fa;
 }
 
 input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     margin: 0 auto;
     display: block;
-    border: 2px solid #4fc3f7;
+    border: 2px solid #00796b;
     border-radius: 4px;
     background-color: #fff;
     transition: background-color 0.3s, border-color 0.3s;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #4fc3f7;
-    border-color: #0288d1;
+    background-color: #00796b;
+    border-color: #004d40;
 }
 
 footer {
     text-align: center;
-    padding: 15px 0;
-    background-color: #4fc3f7;
+    padding: 20px 0;
+    background-color: #00796b;
     color: white;
     width: 100%;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
