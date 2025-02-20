@@ -26,7 +26,7 @@ h1 {
 }
 
 main {
-    width: 95%;
+    width: 100%;
     max-width: 800px;
     background-color: white;
     padding: 10px;
@@ -96,19 +96,27 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     text-align: center;
-    table-layout: auto;
+    table-layout: fixed;
 }
 
 th, td {
-    padding: 8px;
+    padding: 6px;
     text-align: center;
     border-bottom: 1px solid #b0bec5;
     word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 th {
     background-color: #e0f2f1;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 0.8em;
+    }
 }
 
 tr:hover {
@@ -139,3 +147,23 @@ footer {
     width: 100%;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
+
+section id="data-section" style="display: none;">
+    <div style="overflow-x: auto;">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>İşletme Adı</th>
+                    <th>Ad Soyad</th>
+                    <th>Kimlik No</th>
+                    <th>Ücret</th>
+                    <th>Dekont Durumu</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Veriler buraya eklenecek -->
+            </tbody>
+        </table>
+    </div>
+    <button type="button" id="save-screen-button">EKRANI KAYDET</button>
+</section>
